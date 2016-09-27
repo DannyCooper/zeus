@@ -152,7 +152,7 @@ add_action( 'widgets_init', 'zeus_register_sidebars', 5 );
 function zeus_scripts() {
 	wp_enqueue_style( 'ot-zeus-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'zeus-scripts', ZUES_THEME_URI . '/assets/js/scripts.js', array(), '', true );
+	wp_enqueue_script( 'zeus-scripts', ZEUS_THEME_URI . '/assets/js/scripts.js', array(), '', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

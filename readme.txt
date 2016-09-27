@@ -1,12 +1,12 @@
 === Zeus ===
 
 Contributors: dannycooper
-Tags: light, white, one-column, two-columns, responsive-layout, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
+Tags: one-column, two-columns, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
 
-Version: 1.0.6
+Version: 1.2.0
 Requires at least: 4.0
-Tested up to: 4.4.2
-Stable tag: 1.0.5
+Tested up to: 4.6.1
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,9 @@ Zeus has been tested with the following plugins:
 * Contact Form 7
 
 == Changelog ==
+
+= 1.2.0 - September 23, 2016 =
+* UPDATE: use the latest version of the zeus-framework
 
 = 1.1.0 - April 13, 2016 =
 * FIX: typo - change all instances of 'zues' to 'zeus'
@@ -94,3 +97,6 @@ Zeus WordPress Theme bundles the following third-party resources:
 
  * Hybrid Core - functions-attr.php, (C) 2008-2015 Justin Tadlock, [GPL-2](http://opensource.org/licenses/gpl-2.0.php)
   * Source: https://github.com/justintadlock/hybrid-core/blob/3.0/inc/functions-attr.php
+
+* CMB2, (C) WebDevStudios, [GPL-2](http://www.gnu.org/licenses/gpl-2.0.html)
+ * Source: https://github.com/WebDevStudios/CMB2
