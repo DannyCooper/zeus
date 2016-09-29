@@ -150,7 +150,7 @@ add_action( 'widgets_init', 'zeus_register_sidebars', 5 );
  * Enqueue scripts and styles.
  */
 function zeus_scripts() {
-	wp_enqueue_style( 'ot-zeus-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'zeus-stylesheet', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'zeus-scripts', ZEUS_THEME_URI . '/assets/js/scripts.js', array(), '', true );
 

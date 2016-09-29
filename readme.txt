@@ -3,10 +3,10 @@
 Contributors: dannycooper
 Tags: one-column, two-columns, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
 
-Version: 1.2.1
+Version: 1.2.3
 Requires at least: 4.0
 Tested up to: 4.6.1
-Stable tag: 1.2.1
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,18 @@ Zeus has been tested with the following plugins:
 * Contact Form 7
 
 == Changelog ==
+
+= 1.2.3 - September 29, 2016 =
+* FIX: Correctly prefix base.css enqueue
+* FIX: Add text-domain to admin notice button
+* FIX: Add correct date function to footer.php
+* FIX: Remove depreciated constant HEADER_TEXTCOLOR
+* FIX: Add correct default width for header image (1040px)
+* FIX: Escape get_theme_mod() in generate-css.php
+* UPDATE: TGMPA Library
+
+= 1.2.2 - September 28, 2016 =
+* FIX: Header image error
 
 = 1.2.1 - September 28, 2016 =
 * FIX: Header image error
