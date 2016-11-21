@@ -3,10 +3,10 @@
 Contributors: dannycooper
 Tags: one-column, two-columns, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
 
-Version: 1.2.3
+Version: 1.2.4
 Requires at least: 4.0
 Tested up to: 4.6.1
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,9 @@ Zeus has been tested with the following plugins:
 * Contact Form 7
 
 == Changelog ==
+
+= 1.2.4 - November 21, 2016 =
+* UPDATE: CMB2 Library
 
 = 1.2.3 - September 29, 2016 =
 * FIX: Correctly prefix base.css enqueue
