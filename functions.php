@@ -5,6 +5,11 @@
  * @package zeus
  */
 
+// define('USE_ZEUS_ADMIN_NOTICES', true);
+// define('USE_ZEUS_CUSTOMIZER', true);
+// define('USE_TGMPA', true);
+// define('USE_CMB2', true);
+
 /**
  * Load zeus framework.
  */
@@ -70,18 +75,24 @@ if ( ! function_exists( 'zeus_setup' ) ) {
 		);
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support(
-			'custom-background', apply_filters(
-				'zeus_custom_background_args', array(
+		$cb_args = apply_filters( 'zeus_custom_background_args', array(
 				'default-color' => 'E9E9E9',
 				'default-image' => '',
 				)
-			)
-		);
+			);
+		add_theme_support( 'custom-background', $cb_args);
 
 	}
 }
 add_action( 'after_setup_theme', 'zeus_setup' );
+
+/**
+ * Registers an editor stylesheet for the theme.
+ */
+function zeus_add_editor_styles() {
+    add_editor_style( 'assets/css/editor-style.css' );
+}
+add_action( 'admin_init', 'zeus_add_editor_styles' );
 
 if ( ! function_exists( 'zeus_content_width' ) ) {
 	/**
@@ -104,7 +115,7 @@ function zeus_register_sidebars() {
 
 	zeus_register_widget_area(
 		array(
-		'id'          => 'sidebar-primary',
+		'id'          => 'sidebar-1',
 		'name'        => __( 'Primary Sidebar', 'zeus' ),
 		'description' => __( 'Widgets added here are shown in the sidebar next to your content.', 'zeus' ),
 		)
@@ -158,4 +169,5 @@ function zeus_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
+
 add_action( 'wp_enqueue_scripts', 'zeus_scripts' );
