@@ -20,9 +20,9 @@ if ( post_password_required() ) {
 
 <section id="comments" class="comments-area">
 
-    <?php if ( have_comments() ) : ?>
+		<?php if ( have_comments() ) : ?>
 		<h3 class="comments-title">
-    <?php
+		<?php
 				printf(
 					// WPCS: XSS OK.
 					esc_html( _nx( 'One comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'zeus' ) ),
@@ -33,19 +33,19 @@ if ( post_password_required() ) {
 		</h3>
 
 		<ol class="comment-list">
-   			<?php wp_list_comments( 'callback=zeus_comment' ); ?>
+			<?php wp_list_comments( 'callback=zeus_comment' ); ?>
 		</ol><!-- .comment-list -->
 
 		<?php zeus_comments_nav(); ?>
 
-    <?php
-	// If comments are closed and there are comments, let's leave a little note, shall we?
-	if ( ! comments_open() && '0' !== get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
-	    	<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'zeus' ); ?></p>
-	    <?php endif; ?>
+		<?php
+		// If comments are closed and there are comments, let's leave a little note, shall we?
+		if ( ! comments_open() && '0' !== get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
+					<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'zeus' ); ?></p>
+				<?php endif; ?>
 
-    <?php endif; ?>
+		<?php endif; ?>
 
-    <?php comment_form(); ?>
+		<?php comment_form(); ?>
 
 </section><!-- #comments -->

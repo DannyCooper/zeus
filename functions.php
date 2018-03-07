@@ -13,7 +13,7 @@
 /**
  * Load zeus framework.
  */
-require_once( get_template_directory() . '/zeus-framework/init.php' );
+require_once get_template_directory() . '/zeus-framework/init.php';
 
 if ( ! function_exists( 'zeus_setup' ) ) {
 	/**
@@ -56,7 +56,7 @@ if ( ! function_exists( 'zeus_setup' ) ) {
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-			'menu-1' => esc_html__( 'Primary Menu', 'zeus' ),
+				'menu-1' => esc_html__( 'Primary Menu', 'zeus' ),
 			)
 		);
 
@@ -66,21 +66,20 @@ if ( ! function_exists( 'zeus_setup' ) ) {
         */
 		add_theme_support(
 			'html5', array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
 			)
 		);
 
 		// Set up the WordPress core custom background feature.
 		$cb_args = apply_filters( 'zeus_custom_background_args', array(
-				'default-color' => 'E9E9E9',
-				'default-image' => '',
-				)
-			);
-		add_theme_support( 'custom-background', $cb_args);
+			'default-color' => 'E9E9E9',
+			'default-image' => '',
+		) );
+		add_theme_support( 'custom-background', $cb_args );
 
 	}
 }
@@ -90,7 +89,7 @@ add_action( 'after_setup_theme', 'zeus_setup' );
  * Registers an editor stylesheet for the theme.
  */
 function zeus_add_editor_styles() {
-    add_editor_style( 'assets/css/editor-style.css' );
+	add_editor_style( 'assets/css/editor-style.css' );
 }
 add_action( 'admin_init', 'zeus_add_editor_styles' );
 
@@ -115,41 +114,41 @@ function zeus_register_sidebars() {
 
 	zeus_register_widget_area(
 		array(
-		'id'          => 'sidebar-1',
-		'name'        => __( 'Primary Sidebar', 'zeus' ),
-		'description' => __( 'Widgets added here are shown in the sidebar next to your content.', 'zeus' ),
+			'id'          => 'sidebar-1',
+			'name'        => __( 'Primary Sidebar', 'zeus' ),
+			'description' => __( 'Widgets added here are shown in the sidebar next to your content.', 'zeus' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
-		'id'          => 'footer-1',
-		'name'        => __( 'Footer One', 'zeus' ),
-		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zeus' ),
+			'id'          => 'footer-1',
+			'name'        => __( 'Footer One', 'zeus' ),
+			'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zeus' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
-		'id'          => 'footer-2',
-		'name'        => __( 'Footer Two', 'zeus' ),
-		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zeus' ),
+			'id'          => 'footer-2',
+			'name'        => __( 'Footer Two', 'zeus' ),
+			'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zeus' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
-		'id'          => 'footer-3',
-		'name'        => __( 'Footer Three', 'zeus' ),
-		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zeus' ),
+			'id'          => 'footer-3',
+			'name'        => __( 'Footer Three', 'zeus' ),
+			'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zeus' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
-		'id'          => 'footer-4',
-		'name'        => __( 'Footer Four', 'zeus' ),
-		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zeus' ),
+			'id'          => 'footer-4',
+			'name'        => __( 'Footer Four', 'zeus' ),
+			'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zeus' ),
 		)
 	);
 
@@ -171,3 +170,52 @@ function zeus_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'zeus_scripts' );
+
+
+/**
+ * Display the admin notice.
+ */
+function zeus_admin_notice() {
+	global $current_user;
+	$user_id = $current_user->ID;
+	if ( class_exists( 'Olympus_Google_Fonts' ) ) {
+		return;
+	}
+	/* Check that the user hasn't already clicked to ignore the message */
+	if ( ! current_user_can( 'install_plugins' ) ) {
+		return;
+	}
+	if ( ! get_user_meta( $user_id, 'zeus_ignore_notice' ) ) {
+		?>
+
+		<div class="notice notice-info">
+			<p>
+				<?php
+				printf(
+					/* translators: 1: plugin link */
+					esc_html__( 'Easily change the font of your website with our new plugin - %1$s', 'zeus' ),
+					'<a href="' . esc_url( admin_url( 'plugin-install.php?s=olympus+google+fonts&tab=search&type=term' ) ) . '">Google Fonts for WordPress</a>'
+				);
+				?>
+				<span style="float:right">
+					<a href="?zeus_ignore_notice=0"><?php esc_html_e( 'Hide Notice', 'zeus' ); ?></a>
+				</span>
+			</p>
+		</div>
+
+		<?php
+	}
+}
+add_action( 'admin_notices', 'zeus_admin_notice' );
+/**
+ * Dismiss the admin notice.
+ */
+function zeus_dismiss_admin_notice() {
+	global $current_user;
+	$user_id = $current_user->ID;
+	/* If user clicks to ignore the notice, add that to their user meta */
+	if ( isset( $_GET['zeus_ignore_notice'] ) && '0' === $_GET['zeus_ignore_notice'] ) {
+		add_user_meta( $user_id, 'zeus_ignore_notice', 'true', true );
+	}
+}
+add_action( 'admin_init', 'zeus_dismiss_admin_notice' );
